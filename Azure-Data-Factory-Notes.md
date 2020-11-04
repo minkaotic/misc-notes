@@ -1,14 +1,18 @@
 # Azure Data Factory
-Notes based on [this Pluralsight Course](https://app.pluralsight.com/library/courses/building-first-data-pipeline-azure-data-factory/table-of-contents )
+> Notes based on [this Pluralsight Course](https://app.pluralsight.com/library/courses/building-first-data-pipeline-azure-data-factory/table-of-contents )
 
+## Azure Data Factory Overview
 - Microsoft's main data engineering tool
 - cloud-based *data integration* service (allowing new insight by bringing data together)
 - orchestrate + automate data movement and data transformation, with over 80 different connectors
 - .NET build option available
 - No data storage itself - so need to persist data at the end of any process
+- Elastic / Pay as you go model
 
 
 ## ETL vs ELT
+Modern data engineering solutions tend to use one of two approaches:
+
 ### ETL (Extract, Transform, Load)
 - used in traditional BI processes
 - Transform before loading into DWH
@@ -21,7 +25,12 @@ Notes based on [this Pluralsight Course](https://app.pluralsight.com/library/cou
 - good for experiments with several different options
 - useful if business needs change frequently
 
-:point_right: Data Factory can fit with both approaches
+**:point_right: Data Factory can fit with both approaches**, as it can be used in a modular fashion to:
+- ingest data
+- prepare data (cleanse etc.)
+- transform or enrich data
+
+...with the end result being served from a data warehouse and consumed by analytics applications
 
 
 ## Data Factory Elements
