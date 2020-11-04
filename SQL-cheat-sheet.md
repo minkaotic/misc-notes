@@ -121,9 +121,45 @@ SELECT REPLACE(email, '@', '<at>') AS obfuscated_email FROM customers
 
 
 ## Aggregate and numeric functions
-Obtain the **length** of a value or column use the LENGTH() function:
+Obtain the **length** of a value using the `LENGTH()` function:
 ```sql
 SELECT LENGTH(<value or column>) FROM <tables>;
 SELECT * FROM <table> WHERE LENGTH(<value or column>) > <value or column>
+
+-- e.g. get the 5 longest product names:
+SELECT TOP 5 name, LENGTH(name) AS name_length FROM products ORDER BY name_length DESC
 ```
+
+To count rows you can use the `COUNT()` function:
+```sql
+SELECT COUNT(*) FROM <table>;
+
+-- e.g.:
+SELECT COUNT(*) as product_count FROM products WHERE category = 'Books';
+```
+
+Use the `DISTINCT` keyword:
+```sql
+-- with COUNT() to count unique entries:
+SELECT COUNT(DISTINCT <column>) FROM <table>;
+
+-- to show distinct values in a column:
+SELECT DISTINCT <column> FROM <table>;
+```
+
+To count aggregated rows with common values, use the GROUP BY keywords:
+```sql
+SELECT COUNT(<column>) FROM <table> GROUP BY <column with common value>;
+
+-- e.g.:
+SELECT category, count (*) as product_count FROM products GROUP BY category;
+-- returns results in the below format!
+```
+|category   |product_count|
+|-----------|-------------|
+|Books      |20           |
+|Clothing   |6            |
+|Electronics|3            |
+
+
 
