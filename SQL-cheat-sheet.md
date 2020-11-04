@@ -3,7 +3,7 @@
 - [Modifying data](#modifying-data)
 - [Transactions](#transactions)
 - [String manipulation](#string-manipulation)
-
+- [Aggregate and numeric functions](#aggregate-and-numeric-functions)
 
 ## `WHERE` clauses
 Negative condition
@@ -120,9 +120,10 @@ SELECT REPLACE(email, '@', '<at>') AS obfuscated_email FROM customers
 ```
 
 
-## Length
-Obtain the length of a value or column use the LENGTH() function:
+## Aggregate and numeric functions
+Obtain the **length** of a value or column use the LENGTH() function:
 ```sql
 SELECT LENGTH(<value or column>) FROM <tables>;
 SELECT * FROM <table> WHERE LENGTH(<value or column>) > <value or column>
 ```
+
