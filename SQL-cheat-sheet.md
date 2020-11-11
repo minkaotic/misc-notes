@@ -204,4 +204,10 @@ SELECT MAX(<numeric column>) FROM <table>;
 SELECT MIN(<numeric column>) FROM <table>;
 ```
 
+You can also perform basic maths operations on numeric columns, using mathematical operators (/ * + -):
+```sql
+SELECT <numeric column> <mathematical operator> <numeric value> FROM <table>;
+```
 
+To round the results to the desired decimal point, use `ROUND(<value>, <no of decimal points>)`.
+```
