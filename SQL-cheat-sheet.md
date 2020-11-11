@@ -210,4 +210,4 @@ SELECT <numeric column> <mathematical operator> <numeric value> FROM <table>;
 ```
 
 To round the results to the desired decimal point, use `ROUND(<value>, <no of decimal points>)`.
-```
+
