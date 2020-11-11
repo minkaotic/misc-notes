@@ -189,6 +189,19 @@ SELECT SUM(cost) as total_spent, user_id FROM orders
   ORDER BY total_spent DESC
 ```
 
+To get the average value of a numeric column use the `AVG()` function:
 
+```sql
+SELECT AVG(<numeric column>) FROM <table>;
+
+-- e.g. get the average order value per customer
+SELECT user_id, AVG(cost) AS average_cost FROM orders GROUP BY user_id;
+```
+
+To get the maximum or minimum value of a numeric column use the `MAX()` and `MIN()` functions:
+```sql
+SELECT MAX(<numeric column>) FROM <table>;
+SELECT MIN(<numeric column>) FROM <table>;
+```
 
 
