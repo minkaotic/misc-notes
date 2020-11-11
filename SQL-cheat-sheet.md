@@ -9,6 +9,8 @@
 Negative condition
 ```sql
 WHERE <column> != <value>
+-- or
+WHERE <column> <> <value>
 ```
 
 Searching with a set of values
@@ -44,7 +46,7 @@ INSERT INTO <table> VALUES (<value 1>, <value 2>)
 Insert values - flexible column/value order
 - NB: specifying the columns like this allows us to leave out the values for columns that are nullable (by dropping them from both the list of columns and the list of values)
 ```sql
-INSERT INTO <table> (<column 1>, <column 2>) VALUES (<value 1>, <value 2>)
+INSERT INTO <table> (<column 1>, <column 2>) VALUES (<value 1>, <value 2>);
 ```
 
 Insert multiple rows
@@ -53,12 +55,12 @@ INSERT INTO <table> (<column 1>, <column 2>, ...)
              VALUES 
                     (<value 1>, <value 2>, ...),
                     (<value 1>, <value 2>, ...),
-                    (<value 1>, <value 2>, ...)
+                    (<value 1>, <value 2>, ...);
 ```
 
 **Update** values in a row
 ```sql
-UPDATE <table> SET <column 1> = <value 1>, <column 2> = <value 2>
+UPDATE <table> SET <column 1> = <value 1>, <column 2> = <value 2>;
 ```
 
 **Delete** all rows from a table
@@ -69,7 +71,6 @@ DELETE FROM <table>;
 ## Transactions
 - **Autocommit** is default: every statement you write gets saved to disk
 - Switch autocommit off and begin a transaction: `BEGIN TRANSACTION;`
-  - Or simply: `BEGIN;`
 - To save all results of the statements executed since the start of the transaction to disk: `COMMIT;`
 - To reset the state of the database to before the begining of the transaction: `ROLLBACK;`
 
@@ -134,7 +135,7 @@ To count rows you can use the `COUNT()` function:
 ```sql
 SELECT COUNT(*) FROM <table>;
 
--- e.g.:
+-- e.g. get all the product rows in the book category
 SELECT COUNT(*) as product_count FROM products WHERE category = 'Books';
 ```
 
@@ -160,6 +161,34 @@ SELECT category, count (*) as product_count FROM products GROUP BY category;
 |Books      |20           |
 |Clothing   |6            |
 |Electronics|3            |
+
+
+To total up numeric columns use the `SUM()` function:
+```sql
+SELECT SUM(<numeric column) FROM <table>;
+
+-- e.g. get top 5 highest-spending customers
+SELECT TOP 5 SUM(cost) as total_spent, user_id FROM orders
+  GROUP BY user_id
+  ORDER BY total_spent DESC
+```
+
+> :point_right: **NB: When using `GROUP BY`, use `HAVING` to specify conditions applying to the resulting groups**
+
+A `HAVING` clause is like a `WHERE` clause, but applies only to groups as a whole (that is, to the rows in the result set representing groups), whereas the `WHERE` clause applies to individual rows:
+
+```sql
+SELECT SUM(<numeric column) AS <alias> FROM <table>
+  GROUP BY <another column>
+  HAVING <alias> <operator> <value>;
+
+-- e.g. find all users who have spent over £250
+SELECT SUM(cost) as total_spent, user_id FROM orders
+  GROUP BY user_id
+  HAVING total_spent > 250
+  ORDER BY total_spent DESC
+```
+
 
 
 
