@@ -238,5 +238,10 @@ SELECT DATEADD(day, -2, '2020-08-30');
 [Additional date and time functions are documented here.](https://docs.microsoft.com/en-us/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql)
 
 
+## Set Operations
+When looking at two result sets with some linkable data attributes, the following set operations can be performed:
+- **Intersect** - the results that have matches in *both* of the two data sets
+- **Union** - the results that have matches in *either* of the two data sets
+- **Except** - the results that have matches in one data set or another, but not in both
 
 
