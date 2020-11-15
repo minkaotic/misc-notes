@@ -4,6 +4,7 @@
 - [Transactions](#transactions)
 - [String manipulation](#string-manipulation)
 - [Aggregate and numeric functions](#aggregate-and-numeric-functions)
+- [Date and time functions](#date-and-time-functions)
 
 ## `WHERE` clauses
 Negative condition
@@ -210,4 +211,32 @@ SELECT <numeric column> <mathematical operator> <numeric value> FROM <table>;
 ```
 
 To round the results to the desired decimal point, use `ROUND(<value>, <no of decimal points>)`.
+
+
+## Date and time functions
+To get the current date, time, or date time (MSSQL; other DBs have varying syntax), use:
+```sql
+-- current date time
+GETDATE()
+
+-- current time
+CONVERT(time, GETDATE())
+
+-- current date
+CONVERT(date, GETDATE())
+```
+
+To modify a date or date time with various time intervals, use the [`DATEADD()` function](https://docs.microsoft.com/en-us/sql/t-sql/functions/dateadd-transact-sql): 
+```sql
+-- add one month to a date
+SELECT DATEADD(month, 1, '2020-08-30');
+
+-- go 2 days back from a date
+SELECT DATEADD(day, -2, '2020-08-30');
+```
+
+[Additional date and time functions are documented here.](https://docs.microsoft.com/en-us/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql)
+
+
+
 
