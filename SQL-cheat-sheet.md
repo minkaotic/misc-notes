@@ -5,6 +5,8 @@
 - [String manipulation](#string-manipulation)
 - [Aggregate and numeric functions](#aggregate-and-numeric-functions)
 - [Date and time functions](#date-and-time-functions)
+- [Set Operations](#set-operations)
+- [Table Relationships](#table-relationships)
 
 ## `WHERE` clauses
 Negative condition
@@ -241,7 +243,38 @@ SELECT DATEADD(day, -2, '2020-08-30');
 ## Set Operations
 When looking at two result sets with some linkable data attributes, the following set operations can be performed:
 - **Intersect** - the results that have matches in *both* of the two data sets
+  ![intersect diagram](https://www.studytonight.com/dbms/images/sql-intersect.jpg)
 - **Union** - the results that have matches in *either* of the two data sets
-- **Except** - the results that have matches in one data set or another, but not in both
+  ![union diagram](https://www.studytonight.com/dbms/images/sql-union.jpg)
+- **Minus** - the results that have matches in *one* of the data sets, but not the other
+  ![minus diagram](https://www.studytonight.com/dbms/images/minus.jpg)
+- **Except** - the results that have matches in *one data set or another*, but not in both
+
+
+## Table Relationships
+### Database Keys
+Database keys are crucial for linking database tables together. Three main types of DB keys are:
+
+**1. Unique Keys**
+- column set up with a constraint that all new entries must be unique
+- can be null
+- a table can have multiple unique keys
+- can be modified (as long as they don't conflict with any existing values in the column)
+
+**2. Primary Keys**
+- all keys must be unique
+- can never be null
+- a table can only have one primary key
+- cannot be modified
+
+**3. Foreign Keys**
+- any columns that relate records back to the primary key in another table
+- foreign key constraints can be set up that will only allow values to be added to the table if that key does exist in the primary key column of the table it relates back to
+- appropriate foreign key constraints are important for referential integrity
+
+### Different types of relationships
+- Most pairs of linkable tables in a database have a **one-to-many** relationship.
+- Where two entities have a **many-to-many** relationship, these will need to be resolved by creating a 'juncture table' that links up the various foreign key combinations of both tables (essentially creating 2 one-to-many relationships).
+- If two entities have a **one-to-one** relationship, it often makes sense for these to be combined into the same table. Exceptions are if certain columns need to be split out for performance reasons, or if needing to extend a 3rd party table that cannot be modified.
 
 
