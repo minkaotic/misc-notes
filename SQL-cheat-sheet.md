@@ -280,7 +280,7 @@ Database keys are crucial for linking database tables together. Three main types
 
 
 ## Join Queries
-### Inner Join
+### Inner Joins
 ```sql
 SELECT mk.MakeName, md.ModelName FROM Make AS mk
   INNER JOIN Model AS md ON mk.MakeId = md.MakeId
@@ -291,3 +291,16 @@ If multiple tables are inner-joined together, the resulting data set will contai
 
 ![inner join venn diagram](https://image-proxy-cdn.teamtreehouse.com/8e4d3514a77b2bf0f9f8db0f065f86bfa136919a/687474703a2f2f74726565686f7573652d70726f6a6563742d646f776e6c6f6164732e73332e616d617a6f6e6177732e636f6d2f5175657279696e6752656c6174696f6e616c4461746162617365732f636f6d706c65785f76656e6e2e706e67)
 
+### Outer Joins
+There are 3 types of outer joins:
+- **Left:** Includes *all* rows from the table specified first (regardless of whether they match the join condition), and all rows from the table specified 2nd which do match the join condition
+- **Right:** As left outer join, but written in reverse order
+- **Full:** Includes rows from all tables joined on, regardless of whether they match the join condition
+
+Left outer join example:
+```sql
+SELECT mk.MakeName, COUNT(md.ModelID) AS NumberOfModels FROM make AS mk 
+  LEFT JOIN model AS md ON mk.MakeID = md.MakeID
+  GROUP BY mk.MakeName;
+```
+![left outer join venn diagram](https://uploads.teamtreehouse.com/production/quiz-assets/77522/web_venn2.png)
