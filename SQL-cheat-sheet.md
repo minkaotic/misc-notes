@@ -7,6 +7,7 @@
 - [Date and time functions](#date-and-time-functions)
 - [Set Operations](#set-operations)
 - [Table Relationships](#table-relationships)
+- [Join Queries](#join-queries)
 
 ## `WHERE` clauses
 Negative condition
@@ -277,4 +278,16 @@ Database keys are crucial for linking database tables together. Three main types
 - Where two entities have a **many-to-many** relationship, these will need to be resolved by creating a 'juncture table' that links up the various foreign key combinations of both tables (essentially creating 2 one-to-many relationships).
 - If two entities have a **one-to-one** relationship, it often makes sense for these to be combined into the same table. Exceptions are if certain columns need to be split out for performance reasons, or if needing to extend a 3rd party table that cannot be modified.
 
+
+## Join Queries
+### Inner Join
+```sql
+SELECT mk.MakeName, md.ModelName FROM Make AS mk
+  INNER JOIN Model AS md ON mk.MakeId = md.MakeId
+  WHERE mk.MakeName = 'Chevy';
+```
+
+If multiple tables are inner-joined together, the resulting data set will contain only rows that match on the specified relationships throughout all tables.
+
+![inner join venn diagram](https://image-proxy-cdn.teamtreehouse.com/8e4d3514a77b2bf0f9f8db0f065f86bfa136919a/687474703a2f2f74726565686f7573652d70726f6a6563742d646f776e6c6f6164732e73332e616d617a6f6e6177732e636f6d2f5175657279696e6752656c6174696f6e616c4461746162617365732f636f6d706c65785f76656e6e2e706e67)
 
