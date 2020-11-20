@@ -1,6 +1,8 @@
 
 Feedback
 ========
+[for the session: maybe ask 'what is the point of feedback'??]
+
 :point_right: part of a culture of learning and continuous improvement
 
 Giving feedback is awkward... </br>
@@ -52,6 +54,8 @@ Effective feedback process
 1. OBSERVED BEHAVIOUR - "When you do X"
 2. IMPACT - "Y happens"
 3. FUTURE BEHAVIOUR - "Thank you!" or "Can you do that differently?"
+
+[do lots of practice with examples of varying difficulty, e.g. "When you show up late for our meetings, you’re not thinking of others." - is this effective feedback?]
 
 
 Making redirecting feedback feel safe
@@ -105,4 +109,5 @@ In summary:
 - having a process and practising it is key
 
 
-
+## Resources
+https://teamtreehouse.com/library/how-to-give-and-receive-feedback
