@@ -5,9 +5,10 @@
 - [String manipulation](#string-manipulation)
 - [Aggregate and numeric functions](#aggregate-and-numeric-functions)
 - [Date and time functions](#date-and-time-functions)
-- [Set Operations](#set-operations)
 - [Table Relationships](#table-relationships)
 - [Join Queries](#join-queries)
+- [Set Operations](#set-operations)
+
 
 ## `WHERE` clauses
 Negative condition
@@ -241,17 +242,6 @@ SELECT DATEADD(day, -2, '2020-08-30');
 [Additional date and time functions are documented here.](https://docs.microsoft.com/en-us/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql)
 
 
-## Set Operations
-When looking at two result sets with some linkable data attributes, the following set operations can be performed:
-- **Intersect** - the results that have matches in *both* of the two data sets
-  ![intersect diagram](https://www.studytonight.com/dbms/images/sql-intersect.jpg)
-- **Union** - the results that have matches in *either* of the two data sets
-  ![union diagram](https://www.studytonight.com/dbms/images/sql-union.jpg)
-- **Minus** - the results that have matches in *one* of the data sets, but not the other
-  ![minus diagram](https://www.studytonight.com/dbms/images/minus.jpg)
-- **Except** - the results that have matches in *one data set or another*, but not in both
-
-
 ## Table Relationships
 ### Database Keys
 Database keys are crucial for linking database tables together. Three main types of DB keys are:
@@ -304,3 +294,57 @@ SELECT mk.MakeName, COUNT(md.ModelID) AS NumberOfModels FROM make AS mk
   GROUP BY mk.MakeName;
 ```
 ![left outer join venn diagram](https://uploads.teamtreehouse.com/production/quiz-assets/77522/web_venn2.png)
+
+
+## Set Operations
+> **Whilst `JOIN`s combine different *columns* together in the resulting data set, Set Operations combine different *rows* into the new data set.**
+
+When looking at two result sets with some linkable data attributes, the following set operations can be performed:
+
+The **UNION** and **UNION ALL** operators are used to combine the result set of two or more `SELECT` statements.
+- The `UNION` operator selects only distinct values by default. To allow duplicate values, use `UNION ALL`
+- Each `SELECT` statement within `UNION` must have the same number of columns
+- The columns must have similar data types
+- The columns must be in the same order
+
+```sql
+-- get all distinct cities from multiple tables
+SELECT City FROM Customers
+
+UNION
+
+SELECT City FROM Suppliers
+ORDER BY City;
+```
+![union diagram](https://www.studytonight.com/dbms/images/sql-union.jpg)
+
+The **INTERSECT** operator is used to combine two `SELECT` statements, and return only common rows returned by both `SELECT` statements.
+- the same rules about matching number, data type and order of columns in each data set apply
+- `INTERSECT` is a way of applying multiple conditions to a result set via each `SELECT`, as only the rows matching both queries will be returned
+- It can therefore often alternatively be expressed by a `JOIN` and multiple `WHERE/AND` clauses
+
+```sql
+-- get supplier ids from multiple tables based on certain conditions
+SELECT supplier_id
+FROM suppliers
+WHERE supplier_id > 78
+
+INTERSECT
+
+SELECT supplier_id
+FROM orders
+WHERE quantity <> 0;
+```
+![intersect diagram](https://www.studytonight.com/dbms/images/sql-intersect.jpg)
+
+
+
+- **Minus** - the results that have matches in *one* of the data sets, but not the other
+  ![except diagram](https://www.studytonight.com/dbms/images/minus.jpg)
+
+
+
+
+
+
+
