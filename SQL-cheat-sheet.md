@@ -301,7 +301,8 @@ SELECT mk.MakeName, COUNT(md.ModelID) AS NumberOfModels FROM make AS mk
 
 When looking at two result sets with some linkable data attributes, the following set operations can be performed:
 
-The **UNION** and **UNION ALL** operators are used to combine the result set of two or more `SELECT` statements.
+### UNION
+The `UNION` and `UNION ALL` operators are used to combine the result set of two or more `SELECT` statements.
 - The `UNION` operator selects only distinct values by default. To allow duplicate values, use `UNION ALL`
 - Each `SELECT` statement within `UNION` must have the same number of columns
 - The columns must have similar data types
@@ -318,7 +319,8 @@ ORDER BY City;
 ```
 ![union diagram](https://www.studytonight.com/dbms/images/sql-union.jpg)
 
-The **INTERSECT** operator is used to combine two `SELECT` statements, and return only common rows returned by both `SELECT` statements.
+### INTERSECT
+The `INTERSECT`operator is used to combine two `SELECT` statements, and return only common rows returned by both `SELECT` statements.
 - the same rules about matching number, data type and order of columns in each data set apply
 - `INTERSECT` is a way of applying multiple conditions to a result set via each `SELECT`, as only the rows matching both queries will be returned
 - It can therefore often alternatively be expressed by a `JOIN` and multiple `WHERE/AND` clauses
@@ -337,12 +339,35 @@ WHERE quantity <> 0;
 ```
 ![intersect diagram](https://www.studytonight.com/dbms/images/sql-intersect.jpg)
 
+### EXCEPT
+The `EXCEPT` operator combines two `SELECT` statements and returns rows from the first `SELECT` statement that are *not returned by* the second `SELECT` statement.
+- the same rules about matching number, data type and order of columns in each data set apply
 
+```sql
+-- return all product ids that don't have any inventory rows
+SELECT product_id
+FROM products
 
-- **Minus** - the results that have matches in *one* of the data sets, but not the other
-  ![except diagram](https://www.studytonight.com/dbms/images/minus.jpg)
+EXCEPT
 
+SELECT product_id
+FROM inventory;
+```
+![except diagram](https://www.studytonight.com/dbms/images/minus.jpg)
 
+### Ordering the results of Set Operations
+:exclamation: Whilst `WHERE` clauses only apply to each specific `SELECT` statement, `ORDER BY` at the end of the 2nd query applies to the whole result set returned.
+
+```sql
+SELECT MakeName FROM Make
+WHERE MakeName < 'D'
+
+UNION
+
+SELECT MakeName FROM ForeignMake
+WHERE MakeName < 'D'
+ORDER BY MakeName;
+```
 
 
 
