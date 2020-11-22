@@ -320,10 +320,8 @@ ORDER BY City;
 ![union diagram](https://www.studytonight.com/dbms/images/sql-union.jpg)
 
 ### INTERSECT
-The `INTERSECT`operator is used to combine two `SELECT` statements, and return only common rows returned by both `SELECT` statements.
+The `INTERSECT`operator is used to combine two `SELECT` statements, and return only *common rows* returned by both `SELECT` statements.
 - the same rules about matching number, data type and order of columns in each data set apply
-- `INTERSECT` is a way of applying multiple conditions to a result set via each `SELECT`, as only the rows matching both queries will be returned
-- It can therefore often alternatively be expressed by a `JOIN` and multiple `WHERE/AND` clauses
 
 ```sql
 -- get supplier ids from multiple tables based on certain conditions
