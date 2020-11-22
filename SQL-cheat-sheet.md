@@ -8,6 +8,7 @@
 - [Table Relationships](#table-relationships)
 - [Join Queries](#join-queries)
 - [Set Operations](#set-operations)
+- [Subqueries](#subqueries)
 
 
 ## `WHERE` clauses
@@ -367,6 +368,11 @@ WHERE MakeName < 'D'
 ORDER BY MakeName;
 ```
 
+
+## Subqueries
+Subqueries (also known as inner queries or nested queries) are a tool for performing operations in multiple steps. They are useful when...
+- criteria for a `WHERE` clause are not specifically known
+- you need a temporary data set to join with other tables in your database
 
 
 
