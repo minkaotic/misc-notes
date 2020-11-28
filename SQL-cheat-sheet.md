@@ -371,8 +371,45 @@ ORDER BY MakeName;
 
 ## Subqueries
 Subqueries (also known as inner queries or nested queries) are a tool for performing operations in multiple steps. They are useful when...
-- criteria for a `WHERE` clause are not specifically known
+- criteria for a `WHERE` clause are not specifically known, so you filter using the result of a subquery instead
 - you need a temporary data set to join with other tables in your database
+
+### Using `IN` with Subqueries to Filter Data
+NB: only 1 column may be selected in a filter subquery!
+
+```sql
+SELECT * FROM Sale WHERE CarID IN (
+  SELECT CarId FROM Car WHERE ModelYear = 2015
+);
+
+```
+
+### Using a Subquery to Create a Temporary/Derived Table
+
+**Joining on a subquery**
+- In order to have join criteria, the data set returned by the subquery needs to be aliased
+- Multiple columns may be selected in the subquery
+
+Previous example, rewritten to use a temporary table instead:
+```sql
+SELECT s.*, i.ModelYear FROM Sale AS s
+  INNER JOIN (
+    SELECT CarID FROM Car WHERE ModelYear = 2015
+   ) AS i ON i.CarID = s.CarId;
+```
+
+Subqueries creating a derived table can be particularly useful if the data isn't stored in the structure we want for our query.
+
+
+### Subqueries vs Joins
+Example 1 could also have been written as an `INNER JOIN` query:
+```sql
+SELECT s.* FROM Sale AS s
+JOIN Car AS c ON c.CarID=s.CarID
+WHERE c.ModelYear = 2015;
+```
+
+ 
 
 
 
