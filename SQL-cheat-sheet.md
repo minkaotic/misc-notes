@@ -386,7 +386,7 @@ SELECT * FROM Sale WHERE CarID IN (
 
 ### Using a Subquery to Create a Temporary/Derived Table
 
-**Joining on a subquery**
+**`JOIN`ing on a Subquery**
 - In order to have join criteria, the data set returned by the subquery needs to be aliased
 - Multiple columns may be selected in the subquery
 
@@ -398,7 +398,43 @@ SELECT s.*, i.ModelYear FROM Sale AS s
    ) AS i ON i.CarID = s.CarId;
 ```
 
-Subqueries creating a derived table can be particularly useful if the data isn't stored in the structure we want for our query.
+:bulb: Subqueries creating a derived table can be particularly useful *if the data isn't stored in the structure we want for our query.*
+For example, if we want to pivot sales data by location for each sales rep:
+```sql
+SELECT sr.LastName, stl.SaleAmount AS StLouisAmount, col.SaleAmount AS ColumbiaAmount
+  FROM SalesRep AS sr
+  LEFT JOIN (
+    SELECT SalesRepID, SaleAmount FROM Sale
+    WHERE LocationID = 1
+    GROUP BY SalesRepID
+  ) AS stl ON sr.SalesRepID = stl.SalesRepID
+  LEFT JOIN (
+    SELECT SalesRepID, SaleAmount FROM Sale
+    WHERE LocationID = 2
+    GROUP BY SalesRepID
+  ) AS col ON sr.SalesRepID = col.SalesRepID;
+```
+Will generate a result set of this shape:
+
+| LastName | StLouisAmount | ColumbiaAmount |
+|----------|---------------|----------------|
+| Jones    | 49382         |                |
+| Gupta    | 30031         |                |
+| Williams |               | 89023          |
+| Jackson  |               | 56339          |
+| Santiago |               |                |
+
+
+**Subquery in the `FROM` to Perform Multiple Aggregations**
+For example, to group + calculate the average based on the previous aggregation results of a group + count:
+```sql
+SELECT AVG(sub.Count) AS AveragePerMonth, sub.SalesRepID FROM (
+    SELECT SalesRepID, DATEPART('month', SaleDate) AS Month, COUNT(*) as Count from Sale
+    GROUP BY SalesRepID, Month
+  ) AS sub
+GROUP BY sub.SalesRepID
+```
+
 
 
 ### Subqueries vs Joins
