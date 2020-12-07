@@ -9,6 +9,7 @@
 - [Join Queries](#join-queries)
 - [Set Operations](#set-operations)
 - [Subqueries](#subqueries)
+- [Common Table Expressions](#common-table-expressions)
 
 
 ## `WHERE` clauses
@@ -435,7 +436,10 @@ SELECT AVG(sub.Count) AS AveragePerMonth, sub.SalesRepID FROM (
 GROUP BY sub.SalesRepID
 ```
 
-
+**:exclamation: This section still needs more figuring out! Incl. reading the following:**
+- https://www.essentialsql.com/what-is-the-difference-between-a-join-and-subquery/
+- https://mode.com/sql-tutorial/sql-sub-queries/
+- https://www.scarydba.com/2016/10/24/sub-query-not-hurt-performance/
 
 ### Subqueries vs Joins
 Example 1 could also have been written as an `INNER JOIN` query:
@@ -446,7 +450,39 @@ WHERE c.ModelYear = 2015;
 ```
 
  
+## Common Table Expressions
+A CTE is a SQL query which has been named, and is then used within a longer query. CTEs are particularly useful for organising long and complex SQL queries:
+- Represents a temporary result set
+- Makes long queries more readable by giving descriptive names to its building blocks
+- Organises queries into reusable modules
+- Helps mentally break down complex data analysis problems into manageable parts
+- Can be used to refactor subqueries into more readable SQL
 
+Create CTEs using the `WITH` statement (don't use a semicolon at the end!):
+```sql
+WITH cte_name AS (
+  -- select statement here
+)
+```
+
+Then use CTE like a table:
+```sql
+SELECT * FROM cte_name;
+```
+
+:bulb: Separate multiple CTEs with commas!
+```sql
+WITH all_orders AS (
+  -- select all orders
+),
+late_orders AS (
+  -- select late queries
+)
+
+-- then use CTEs in the main query like a table (joining on it, selecting from it etc.)
+```
+
+:bulb: CTEs can also be used inside other CTEs, as long as all CTEs are declared before they are referenced.
 
 
 
