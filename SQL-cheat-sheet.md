@@ -38,10 +38,15 @@ WHERE title LIKE "Harry Potter%Fire"
 WHERE title NOT LIKE "Harry Potter%Fire"
 ```
 
-Searching for empty values
+Searching for null values
 ```sql
 WHERE <column> IS NULL
 WHERE <column> IS NOT NULL
+```
+
+Searching for null or empty values, using null coalescing operator
+```sql
+WHERE ISNULL(<column>, '') = ''
 ```
 
 ## Modifying data
@@ -63,6 +68,13 @@ INSERT INTO <table> (<column 1>, <column 2>, ...)
                     (<value 1>, <value 2>, ...),
                     (<value 1>, <value 2>, ...),
                     (<value 1>, <value 2>, ...);
+```
+
+Insert results of a `SELECT` statement
+```sql
+INSERT INTO <table> (<column 1>, <column 2>, ...) 
+SELECT <column 1>, <column 2>, ... FROM <otherTable>
+-- e.g. any SELECT query that returns data matching the columns to be inserted into
 ```
 
 **Update** values in a row
@@ -155,7 +167,7 @@ SELECT COUNT(DISTINCT <column>) FROM <table>;
 SELECT DISTINCT <column> FROM <table>;
 ```
 
-To count aggregated rows with common values, use the GROUP BY keywords:
+To count aggregated rows with common values, use the `GROUP BY` keywords:
 ```sql
 SELECT COUNT(<column>) FROM <table> GROUP BY <column with common value>;
 
@@ -251,13 +263,13 @@ Database keys are crucial for linking database tables together. Three main types
 **1. Unique Keys**
 - column set up with a constraint that all new entries must be unique
 - can be null
-- a table can have multiple unique keys
-- can be modified (as long as they don't conflict with any existing values in the column)
+- a table can have multiple unique key constraints
+- can be modified (as long as no conflict with any existing values in the column)
 
 **2. Primary Keys**
 - all keys must be unique
 - can never be null
-- a table can only have one primary key
+- a table can only have one primary key constraint, although it can be a composite of more than one column)
 - cannot be modified
 
 **3. Foreign Keys**
