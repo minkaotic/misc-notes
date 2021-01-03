@@ -167,7 +167,7 @@ SELECT COUNT(DISTINCT <column>) FROM <table>;
 SELECT DISTINCT <column> FROM <table>;
 ```
 
-To count aggregated rows with common values, use the `GROUP BY` keywords:
+To count aggregated rows with common values, use the **`GROUP BY`** keywords:
 ```sql
 SELECT COUNT(<column>) FROM <table> GROUP BY <column with common value>;
 
@@ -181,6 +181,7 @@ SELECT category, count (*) as product_count FROM products GROUP BY category;
 |Clothing   |6            |
 |Electronics|3            |
 
+> :point_right: You can `GROUP BY` multiple columns too, [more information here](https://stackoverflow.com/questions/2421388/using-group-by-on-multiple-columns)
 
 To total up numeric columns use the `SUM()` function:
 ```sql
