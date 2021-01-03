@@ -310,6 +310,16 @@ SELECT mk.MakeName, COUNT(md.ModelID) AS NumberOfModels FROM make AS mk
 ```
 ![left outer join venn diagram](https://uploads.teamtreehouse.com/production/quiz-assets/77522/web_venn2.png)
 
+### Joins with filters
+You can use additional `ON` conditions in your `JOIN` statements to filter down results as well:
+```sql
+SELECT p.*, s.NAME AS SUBJECT FROM PERIODS AS p
+LEFT JOIN CLASSES AS c ON p.ID = c.PERIOD_ID AND c.TEACHER_ID = 391
+LEFT JOIN SUBJECTS AS s ON s.ID = c.SUBJECT_ID
+```
+
+This can be useful when you want the result set of this outer join to include all rows from the `PERIODS` table, even ones that don't match the `TEACHER_ID` condition, as those rows would be excluded if a `WHERE c.TEACHER_ID = 391` clause was used instead. (Alternatively you could use a CTE or subquery to achieve similar results, but this would involve a more complex query.)
+
 
 ## Set Operations
 > **Whilst `JOIN`s combine different *columns* together in the resulting data set, Set Operations combine different *rows* into the new data set.**
