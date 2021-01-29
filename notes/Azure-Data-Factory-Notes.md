@@ -44,4 +44,4 @@ Modern data engineering solutions tend to use one of two approaches:
 5. **Datasets** = representations of the data you're working with (files, SQL tables...)
 6. **Linked services** = connections to the actual data (in its stored form) to be operated on
 
-![Azure Data Factory elements diagram](data-factory-elements-diagram.png)
+![Azure Data Factory elements diagram](../images/data-factory-elements-diagram.png)
