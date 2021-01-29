@@ -7,6 +7,6 @@ Miscellaneous learnings and takeaways, such as:
 
 🔒 **[OAuth & OpenID Connect](OAuth-and-OpenID-Connect.md)**
 
-🐧 **[Linux Command Line Glossary](Linux-Command-Line-Glossary.md)**
+🐧 **[Linux Command Line Wizz](Linux-Command-Line-Wizz.md)**
 
 🗣️ **[Feedback](Feedback.md)**
