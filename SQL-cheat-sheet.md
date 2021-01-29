@@ -459,11 +459,6 @@ SELECT AVG(sub.Count) AS AveragePerMonth, sub.SalesRepID FROM (
 GROUP BY sub.SalesRepID
 ```
 
-**:exclamation: This section still needs more figuring out! Incl. reading the following:**
-- https://www.essentialsql.com/what-is-the-difference-between-a-join-and-subquery/
-- https://mode.com/sql-tutorial/sql-sub-queries/
-- https://www.scarydba.com/2016/10/24/sub-query-not-hurt-performance/
-
 ### Subqueries vs Joins
 Example 1 could also have been written as an `INNER JOIN` query:
 ```sql
@@ -471,6 +466,11 @@ SELECT s.* FROM Sale AS s
 JOIN Car AS c ON c.CarID=s.CarID
 WHERE c.ModelYear = 2015;
 ```
+
+**:exclamation: This section still needs more figuring out! Incl. reading the following:**
+- https://www.essentialsql.com/what-is-the-difference-between-a-join-and-subquery/
+- https://mode.com/sql-tutorial/sql-sub-queries/
+- https://www.scarydba.com/2016/10/24/sub-query-not-hurt-performance/
 
  
 ## Common Table Expressions
