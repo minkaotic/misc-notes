@@ -1,9 +1,11 @@
 # Linux Command Line Wizz
 [Package management](#package-management) | [Processes](#processes) | [Permissions](#permissions) | [Environment](#environment) | [Find & Grep](#find--grep) | [Pipes & Redirection](#pipes--redirection)
 
-**Sources:**
+**Resources:**
 - https://www.codecademy.com/articles/command-line-commands
+- Command Line Challenge: https://cmdchallenge.com/#/search_for_files_containing_string
 - https://teamtreehouse.com/library/console-foundations
+- `grep` by example: https://www.shortcutfoo.com/blog/grep-by-example
 
 ## Package management
 - `sudo apt-get update && apt-get upgrade` - update package index and then upgrade all currently installed software packages (add  package name to only upgrade specific package)
