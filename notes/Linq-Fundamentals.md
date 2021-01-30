@@ -1,4 +1,5 @@
 # LINQ Fundamentals
+Source: [*LINQ Fundamentals* on Pluralsight](https://app.pluralsight.com/library/courses/linq-fundamentals-csharp-6/table-of-contents)
 
 ### Contents
 - [Intro](#intro)
@@ -21,8 +22,29 @@ LINQ (**l**anguage **in**tegrated **q**uery) can be run on anything that impleme
   ```
 
 ### C# Features underpinning LINQ
-- Extension Methods
-- Lambda Expressions
+#### Extension Methods
+...allow us to define a static method that appears to be a member of another type. They can be used to extend classes, interfaces, structs etc.
+
+```c#
+public static class StringExtensions {
+    static public double ToDouble(this string input) {
+        return double.Parse(input);
+    }
+}
+```
+- the first parameter of an extension method uses `this` modifier
+- the type of the first parameter is the type you're targetting to extend
+- this then allows us to invoke the extension method with instance syntax:
+
+```c#
+var myString = "2.345";
+var myDouble = myString.ToDouble();
+```
+
+LINQ works by creating lots of useful extension methods on the `IEnumerable<T>` interface.
+
+#### Lambda Expressions
+
 
 ## Basic Queries
 
