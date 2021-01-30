@@ -44,7 +44,25 @@ var myDouble = myString.ToDouble();
 LINQ works by creating lots of useful extension methods on the `IEnumerable<T>` interface.
 
 #### Lambda Expressions
-
+A lambda expression is a short, concise syntax for defining a method that can be invoked. The following examples compare 3 different ways of passing a method as a parameter to another method:
+- passing a named method:
+  ```c#
+  IEnumerable<string> filteredList = cities.Where(StartsWithL);
+  
+  public bool StartsWithL(string name)
+  {
+    return name.StartsWith("L");
+  }
+  ```
+- passing an anonymous method (before lambda syntax - note how verbose this is):
+  ```c#
+  IEnumerable<string> filteredList = cities.Where(delegate(string s) { return name.StartsWith("L"); });
+  ```
+- passing an anonymous method using lambda syntax:
+  ```c#
+  IEnumerable<string> filteredList = cities.Where(s => s.StartsWith("L"));
+  ```
+The concise syntax of lambda expressions made using them extensively with LINQ's methods viable - in fact they were introduced in the same release of C# as LINQ.
 
 ## Basic Queries
 
