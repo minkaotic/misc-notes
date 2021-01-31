@@ -64,6 +64,39 @@ A lambda expression is a short, concise syntax for defining a method that can be
   ```
 The concise syntax of lambda expressions made using them extensively with LINQ's methods viable - in fact they were introduced in the same release of C# as LINQ.
 
+#### 🎁 Bonus: Funky function syntax in C#
+There are 2 delegate types in C#: **`Func` and `Action`** (they are syntactically very similar, with the key difference that `Action` has no return type / is void). LINQ mostly uses `Func`! The following 3 examples are all equivalent:
+```c#
+// 1. Func type declaration - NB: last generic type always refers to return type!
+Func<int, int> square = x => x * x;
+var result = square(3);
+
+// 2. Local function definition
+int square(int x) => x * x;
+var result = square(3);
+
+// 3. Inline function invokation
+var result = ((Func<int, int>)(x => x * x))(3);
+```
+Similar to JS, if using none or more than one parameter in the lambda expression, you need parentheses; and you can add a function body with a `return` statement for more complex logic:
+```c#
+Func<int, int, int> add = (x, y) =>
+{
+    var sum = x + y;
+    return sum;
+};
+var result = add(3, 6);
+```
+> :bulb: You *can* pass more complex lambda expressions such as the above to a LINQ query!
+```c#
+var scotts = developers.Where(x =>
+{
+    var isRelevant = x.Name == "Scott";
+    return isRelevant;
+});
+```
+
+
 ## Basic Queries
 
 ## Filtering, Sorting, Projecting
