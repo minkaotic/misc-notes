@@ -10,16 +10,19 @@ Source: [*LINQ Fundamentals* on Pluralsight](https://app.pluralsight.com/library
 -------------
 ## Intro
 LINQ (**l**anguage **in**tegrated **q**uery) can be run on anything that implements `IEnumerable<T>`. There are two types of LINQ syntax:
-- *query syntax* - which is heavily inspired by SQL
+- *query syntax* - which is heavily inspired by SQL; this always starts with the `from` keyword and ends with a `select` or `group` statement
   ```c#
   var numbers = new List<int> { 2, 4, 8, 16, 32, 64 };
   from n in numbers where n > 10 select n;  //returns { 16, 32, 64 }
   ```
-- and *method syntax* - which allows some operations not possible in query syntax
+- and *method syntax* - which relies on extension methods on `IEnumerable<T>`
   ```c#
   var numbers = new List<int> { 2, 4, 8, 16, 32, 64 };
   numbers.Where(n => n > 10);  //returns { 16, 32, 64 }
   ```
+- as the extension methods used by method syntax typically operate on _and_ return `IEnumerable`, they can be chained
+- method syntax allows some operations (such as `Count()`, `Take()` and `Skip()`) that are not possible in query syntax
+- under the hood, query syntax gets turned into method syntax
 
 ### C# Features underpinning LINQ
 #### Extension Methods
