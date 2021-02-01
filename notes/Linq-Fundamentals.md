@@ -3,7 +3,7 @@ Source: [*LINQ Fundamentals* on Pluralsight](https://app.pluralsight.com/library
 
 ### Contents
 - [Intro](#intro)
-- [LINQ Under The Hood](#linq-under-the-hood)
+- [LINQ under the hood](#linq-under-the-hood)
 - [Filtering, Sorting, Projecting](#filtering-sorting-projecting)
 - [Grouping, Joining, Aggregating](#grouping-joining-aggregating)
 
@@ -24,7 +24,7 @@ LINQ (**l**anguage **in**tegrated **q**uery) can be run on anything that impleme
 - method syntax allows some operations (such as `Count()`, `Take()` and `Skip()`) that are not possible in query syntax
 - under the hood, query syntax gets turned into method syntax
 
-## LINQ Under The Hood
+## LINQ under the hood
 There are two key C# features that underpin LINQ:
 - Extension methods
 - Lambda expressions
