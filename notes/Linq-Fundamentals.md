@@ -3,7 +3,7 @@ Source: [*LINQ Fundamentals* on Pluralsight](https://app.pluralsight.com/library
 
 ### Contents
 - [Intro](#intro)
-- [Basic Queries](#basic-queries)
+- [LINQ Under The Hood](#linq-under-the-hood)
 - [Filtering, Sorting, Projecting](#filtering-sorting-projecting)
 - [Grouping, Joining, Aggregating](#grouping-joining-aggregating)
 
@@ -24,8 +24,12 @@ LINQ (**l**anguage **in**tegrated **q**uery) can be run on anything that impleme
 - method syntax allows some operations (such as `Count()`, `Take()` and `Skip()`) that are not possible in query syntax
 - under the hood, query syntax gets turned into method syntax
 
-### C# Features underpinning LINQ
-#### Extension Methods
+## LINQ Under The Hood
+There are two key C# features that underpin LINQ:
+- Extension methods
+- Lambda expressions
+
+### Extension Methods
 ...allow us to define a static method that appears to be a member of another type. They can be used to extend classes, interfaces, structs etc.
 
 ```c#
@@ -46,7 +50,7 @@ var myDouble = myString.ToDouble();
 
 LINQ works by creating lots of useful extension methods on the `IEnumerable<T>` interface.
 
-#### Lambda Expressions
+### Lambda Expressions
 A lambda expression is a short, concise syntax for defining a method that can be invoked. The following examples compare 3 different ways of passing a method as a parameter to another method:
 - passing a named method:
   ```c#
@@ -90,7 +94,7 @@ Func<int, int, int> add = (x, y) =>
 };
 var result = add(3, 6);
 ```
-> :bulb: You *can* pass more complex lambda expressions such as the above to a LINQ query!
+> :bulb: You *can* pass multi-line lambda expressions to a LINQ query!
 ```c#
 var scotts = developers.Where(x =>
 {
@@ -99,8 +103,51 @@ var scotts = developers.Where(x =>
 });
 ```
 
+**:point_right: So in theory, the logic of a LINQ query method could be implemented as follows** (using `.Where` as a hypothetical example):
+```c#
+public static IEnumerable<T> Where<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+{
+    var result = new List<T>();
+    foreach (var item in source)
+    {
+        if (predicate(item))
+        {
+            result.Add(item);
+        }
+    }
+    return result;
+}
+```
+**However,** it's not as simple as this....
 
-## Basic Queries
+### Deferred execution
+Many LINQ methods use deferred execution, and are actually implemented a little more like this:
+```c#
+public static IEnumerable<T> Where<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+{
+    foreach (var item in source)
+    {
+        if (predicate(item))
+        {
+            yield return item;
+        }
+    }
+}
+```
+`yield` can be used to build up `IEnumerable` and similar data structures, and using it here means that *the filtering code won't actually execute until we try to access the resulting IEnumerable elsewhere in our code*.
+
+In other words: **LINQ queries using `yield` will do no real work until we force the query to produce a result** (e.g., by using the result).
+
+```c#
+// defines a query, but this won't execute here
+var query = movies.Where(m => m.Year > 2000);
+
+// at this point we force the query to execute as we need the results
+foreach(movie in query)
+{
+  Console.WriteLine(movie.Title);
+}
+```
 
 ## Filtering, Sorting, Projecting
 
