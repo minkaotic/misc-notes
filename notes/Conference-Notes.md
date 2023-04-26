@@ -2,6 +2,7 @@
 ## Agile Evolution: An Enterprise Transformation That Shows That You Can Too
 (Martin Hinshelwood)
 https://developerweekeurope2023.sched.com/event/1KC2f/open-talk-agile-evolution-an-enterprise-transformation-that-shows-that-you-can-too
+-> actually ended up being a talk about Microsoft's journey to agile, focusing on practices of Azure Devops team!
 
 ### Intro
 - **DevOps:** "Union of people, process and products to enable continuous delivery of value to end users"
@@ -38,8 +39,18 @@ https://developerweekeurope2023.sched.com/event/1KC2f/open-talk-agile-evolution-
 - long journey from 2-year delivery to 3 week sprints
 - "Find the part of your process in getting value to customers that slows you down or hurts _the most_. Make it _incrementally better_ each sprint. Re-evaluate and improve the next most painful."
 - "Stabilization sprints" (dedicated to paying back technical debt or fixing bugs) are a very bad idea: they will ramp up tech debt as people default to "we'll fix it later" so bug trend actually went up significantly (my thought: contradicts 'build quality in')
-- 
+- Feature flags to control exposure; reduces integration debt
+- MS now use this a lot, even on a user level to get feedback when users raise specific issues
 
+### Production first mindset
+- admit when you made mistakes; transparency is super important
+- includes transparancy in communication on incidents
+- automate COMPLETELY (not just partially) - all the way to production, but work out how to control the blast radius
 
+ME: Does 'automate to production completely' rule out manual product testing (to supplement automated test suites) along the way?
+-> Speaker: yes absolutely it does, there is no room for UAT: get criteria of what is needed to be happy to deploy, and automate them
+Book a sesh to discuss further: https://nkdagility.com/book-online/
 
+Further reading: https://nkdagility.com/learn/agile-delivery-kit/whitepapers/enterprise-evolution-that-shows-that-you-can-too/
 
+![image](https://user-images.githubusercontent.com/6144523/234567709-f9ab7a56-4050-460b-bbd5-4491878691aa.png)
