@@ -1,7 +1,9 @@
 # DEVELOPER WEEK EUROPE 2023
 ## Agile Evolution: An Enterprise Transformation That Shows That You Can Too
 (Martin Hinshelwood)
+
 https://developerweekeurope2023.sched.com/event/1KC2f/open-talk-agile-evolution-an-enterprise-transformation-that-shows-that-you-can-too
+
 -> actually ended up being a talk about Microsoft's journey to agile, focusing on practices of Azure Devops team!
 
 ### Intro
