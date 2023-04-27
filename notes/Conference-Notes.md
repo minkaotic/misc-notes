@@ -56,3 +56,98 @@ Book a sesh to discuss further: https://nkdagility.com/book-online/
 Further reading: https://nkdagility.com/learn/agile-delivery-kit/whitepapers/enterprise-evolution-that-shows-that-you-can-too/
 
 ![image](https://user-images.githubusercontent.com/6144523/234567709-f9ab7a56-4050-460b-bbd5-4491878691aa.png)
+
+--------------
+
+## Code Review Is Too Little Too Late - Shift Left the Code Review Process
+(Omer Rosenbaum)
+
+https://developerweekeurope2023.sched.com/event/1KRuW/open-talk-code-review-is-too-little-too-late-shift-left-the-code-review-process
+
+- same mistakes repeating themselves & depending on people with knowledge catching it each time
+![image](https://user-images.githubusercontent.com/6144523/234853899-855268f1-0a8a-4e84-8b95-a5412a41ecc1.png)
+
+### Why should we review code?
+- Enforce coding standards
+- Find bugs
+- Share knowledge
+- Ensure code is clear / readable
+- Verify code does what it is supposed to do
+
+### Where does it come in the lifecycle?
+![image](https://user-images.githubusercontent.com/6144523/234850508-5f2f22e1-6bbd-4cfa-b2df-51c92e951fd2.png)
+
+Is this too late? -> It depends!
+
+![image](https://user-images.githubusercontent.com/6144523/234850912-12f0a858-0709-45dc-a942-2f8f3ab2c5b5.png)
+
+- Best practices / coding standards often captured in wikis -> but relying on people memorising this feels old school and not really that helpful -> use linters instead!
+- Can expand use of linters to avoid bugs too (i.e. not doing dangerous casts; not using functions that might have side effects)
+- But Linters are limited to "don't do X" (+ sometimes "use Y instead")
+- Code-coupled docs that can pop up relevant documentation in place -> great for documenting more complex best practices; these can be used to automate feedback into future codings
+- both Linters and Code-coupled docs allow to "shift CR benefits left"
+
+My own takeaways:
+- don't waste CR resource on things like style guide lines and coding standards
+- automate whatever can into linting
+- we haven't really invested much time into making linters (or formatting defaults in VS) actually our friend
+- give Swimm a go - https://swimm.io/
+
+--------------
+
+## Are We Still Building For Developers?
+(Gertrude Westrin)
+
+https://developerweekeurope2023.sched.com/event/1KoE6/open-talk-are-we-still-building-for-developers
+
+- "Developer Advocacy" / internal developer enablement
+- about how efficient your devs can be; giving them what they need, when they need it
+- Rather than 10x devs - "what you want is someone who can come in and make 10 developers more productive" (Kelsey Hightower)
+
+### Getting started
+1. Establish stakeholders (of a project) - reach out and ask lots of questions
+2. Demos
+3. Get feedback
+4. Clear CTA
+5. Incentivise
+
+--------------
+
+## Secret Shortcuts of Loading Web Performance
+(Nikola Mitrovic)
+
+https://developerweekeurope2023.sched.com/event/1LELC/open-talk-secret-shortcuts-of-loading-web-performance?iframe=no
+
+### What is Loading Performance?
+![image](https://user-images.githubusercontent.com/6144523/234886109-6ecb2baa-596b-48e0-a809-04dece4deb74.png)
+
+Javascript is the biggest cause of poor loading performance on the web today
+
+### Standard optimization techniques
+- minimizing & compressing files (esp JavaScript)
+- using tree-shaking
+- inlining critical CSS
+- using next-gen image formats
+- apply caching headers
+- use server-side rendering
+
+- code splitting = chopping bundle up into lots of smaller JS bundles, rather than one epic on
+- In react -> Route-based code splitting or Component-based code splitting
+- Reduce usage of libraries
+
+--------------
+
+## It’s Not Them, It’s You: How to Succeed as a Remote Leader
+(Inna Weiner)
+
+https://developerweekeurope2023.sched.com/event/1JhCx/featured-talk-its-not-them-its-you-how-to-succeed-as-a-remote-leader
+
+- Remote (implying some centre of gravity) vs distributed vs hybrid
+
+### High-context vs low-context cultures
+![image](https://user-images.githubusercontent.com/6144523/234902579-4c3b3d5f-60b6-4477-a635-586617cfd218.png)
+
+
+
+
+
