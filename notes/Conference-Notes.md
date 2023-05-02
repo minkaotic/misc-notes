@@ -100,6 +100,11 @@ My own takeaways:
 
 https://developerweekeurope2023.sched.com/event/1KoE6/open-talk-are-we-still-building-for-developers
 
+TODO:
+- https://launchdarkly.com/blog/what-is-a-developer-advocate/
+- https://github.com/readme/guides/angie-jones-demystifying-developer-advocacy
+- https://draft.dev/learn/what-is-a-developer-advocate
+
 - "Developer Advocacy" / internal developer enablement
 - about how efficient your devs can be; giving them what they need, when they need it
 - Rather than 10x devs - "what you want is someone who can come in and make 10 developers more productive" (Kelsey Hightower)
@@ -147,7 +152,10 @@ https://developerweekeurope2023.sched.com/event/1JhCx/featured-talk-its-not-them
 ### High-context vs low-context cultures
 ![image](https://user-images.githubusercontent.com/6144523/234902579-4c3b3d5f-60b6-4477-a635-586617cfd218.png)
 
-
-
+TODO:
+- https://www.futurelearn.com/info/courses/intercultural-communication/0/steps/11070
+- https://www.countrynavigator.com/blog/what-are-the-differences-between-high-context-and-low-context-cultures
+- https://en.wikipedia.org/wiki/High-context_and_low-context_cultures
+- https://www.techtello.com/high-context-culture-vs-low-context-culture/
 
 
