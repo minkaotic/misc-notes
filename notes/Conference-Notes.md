@@ -123,6 +123,10 @@ TODO:
 
 https://developerweekeurope2023.sched.com/event/1LELC/open-talk-secret-shortcuts-of-loading-web-performance?iframe=no
 
+TODO:
+- https://nikola-mitrovic.slides.com/nmitrovic/loading-performance-ca7b02
+- Maybe rewatch his talk (or other talks he's done)?
+
 ### What is Loading Performance?
 ![image](https://user-images.githubusercontent.com/6144523/234886109-6ecb2baa-596b-48e0-a809-04dece4deb74.png)
 
