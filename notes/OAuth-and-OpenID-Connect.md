@@ -52,7 +52,7 @@ Instead, you retrieve a token that we can use with anyone that wants access to o
 ## OAuth & OpenID Connect
 Both are protocols stipulating how to build APIs such that they can be accessed to retrieve data in a common and secure manner. 
 
-- **[OAuth 2.0](https://oauth.net/2/)** is a token-based security protocol. It is the industry-standard protocol for authorisation, focusing on client developer simplicity while providing specific authorisation flows for web apps, desktop apps, mobile devices IoT devices. It's *not backwards compatible* with older versions of OAuth.
+- **[OAuth 2.0](https://oauth.net/2/)** is a token-based security protocol. It is the industry-standard protocol for authorisation, focusing on client developer simplicity while providing specific authorisation flows for web apps, desktop apps, mobile devices & IoT devices. It's *not backwards compatible* with older versions of OAuth.
 
 - **[OpenID Connect](https://openid.net/connect/)** complements OAuth 2.0, by providing a simple identity layer on top of it, which allows clients to: 
   - verify the identity of an end-user based on the authentication performed by an authorisation server
