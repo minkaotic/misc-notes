@@ -10,8 +10,9 @@ ________________
 
 ## Introduction to Token-based security
 :bulb: **Premise:** you don't want to have to be passing a user's user name and password around every time you need to call an endpoint to access some user's information.
+Instead, you retrieve a token that we can use with anyone that wants access to our data.
 
-**Common workflow to get around this in .NET Core:**
+**Common workflow in .NET Core:**
 1. Use `[Authorization]` attribute on controllers / actions
 1. Have website redirect the request to the authorisation server, where the user will be securely entering their user name + password
 1. Redirect user back to our website with a token that can be used to interact with our API (passed in header of each request)
