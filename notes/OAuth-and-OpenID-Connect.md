@@ -35,15 +35,16 @@ Instead, you retrieve a token that we can use with anyone that wants access to o
 #### What's in a token?
 - "Token" = JSON Web Token (JWT), Base64 encoded
 - contains some user data, such as email address
-- contains information about the authorisation server
-- signed by the authorisation server
+- contains information about what the user has access to
+- contains information about who issued the token (the authorisation server)
+- signed by the authorisation server with its private key
 
 = this type of token is also referred to as **Access Token** or **Identity Token**
 
 #### What's an authorisation server?
 :point_right: an application using the [OAuth and OpenID Connect](#oauth--openid-connect) security protocols in order to trade a username and password (or other such credentials) for a secure token. The authorisation server signs the token with a private key that *only it has access to*. The public key can be accessed by any interacting application, and is used for token validation.
 
-:fire: **It's the responsibility of the API receiving the token in the request (the consumer) to ensure that the signature is intact and the token is valid** (using the public key).
+:fire: **It's the responsibility of the API receiving the token in the request (the consumer) to ensure that the signature is intact and the token is valid** (using the public key). If the signature is not intact, the token has likely been tampered with.
 
 ![signing tokens](https://github.com/minkaotic/front-end-notes/blob/master/img/token-signing.PNG)
 
