@@ -3,9 +3,9 @@
 Notes based on [this Pluralsight course](https://app.pluralsight.com/library/courses/asp-dot-net-core-oauth/table-of-contents), [RFC 6749](https://tools.ietf.org/html/rfc6749) and [IdentityServer Quickstarts](https://identityserver4.readthedocs.io/en/latest/quickstarts/0_overview.html).
 
 ## Contents
-1. [Introduction to Token-based security](#introduction-to-token-based-security)
+1. [Introduction to Token-based Security](#introduction-to-token-based-security)
 1. [OAuth & OpenID Connect](#oauth--openid-connect)
-1. [Obtaining, inspecting and working with Access Tokens](#obtaining-inspecting-and-working-with-access-tokens)
+1. [Access Tokens & Different Authorisation Flows](#access-tokens-&-different-authorisation-flows)
 ________________
 
 ## Introduction to Token-based security
@@ -62,7 +62,7 @@ Both are protocols stipulating how to build APIs such that they can be accessed 
 - Authorisation is about gaining access (to certain resources / to data / to a building etc.)
 - Authentication is about proving who we are (our identity), i.e. via our user name and password
 
-> :bulb: **OAuth is all about *authorisation*** - a way to prove that someone has access to something. **OpenID Connect is about *authentication*** - allowing us to identify who the user is.**
+> :bulb: **OAuth is all about *authorisation*** - a way to prove that someone has access to something. **OpenID Connect is about *authentication*** - allowing us to identify who the user is.
 
 ### Applying these protocols
 Three options are:
@@ -85,7 +85,7 @@ Three options are:
 - `/.well-known/jwks` - information about JWTs and the public keys - used for token validation
 
 
-## Obtaining, inspecting and working with Access Tokens
+## Access Tokens & Different Authorisation Flows
 Demo example:
 1. Call `/token` endpoint using [Resource Owner Password Credentials](#credential-flows-post-requests-with-client-authentication) flow: `POST` request containing `client_id`, `client_secret`, `grant_type`, `username` and `password`
 1. Receive a response containing the `access_token`, `expires_in` and `token_type` ("Bearer")
