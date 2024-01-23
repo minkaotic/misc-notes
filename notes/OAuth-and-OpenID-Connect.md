@@ -5,7 +5,7 @@ Notes based on [this Pluralsight course](https://app.pluralsight.com/library/cou
 ## Contents
 1. [Introduction to Token-based Security](#introduction-to-token-based-security)
 1. [OAuth & OpenID Connect](#oauth--openid-connect)
-1. [Access Tokens & Different Authorisation Flows](#access-tokens-&-different-authorisation-flows)
+1. [Access Tokens & Different Authorisation Flows](#access-tokens--different-authorisation-flows)
 ________________
 
 ## Introduction to Token-based security
@@ -99,8 +99,7 @@ Tokens break down into:
 - **Payload** - *a.k.a. Claims*, containing any relevant information about the user; commonly contains details about:
   - Issuer
   - Audience
-  - Expiry
-  - Valid from
+  - Expiry and/or Valid from
   - Client ID
   - Scopes (which parts of an API access is granted to)
   - Custom data (could include pretty much anything that is persistent and won't change between the the token being issued and it being used)
