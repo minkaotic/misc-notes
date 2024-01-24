@@ -15,6 +15,8 @@ Miscellaneous learnings and takeaways, such as:
 ## People
 - 🗣️ [Feedback](notes/Feedback.md)
 
-## Truly miscellaneous 
+## Security
 - 🔒 [OAuth & OpenID Connect](notes/OAuth-and-OpenID-Connect.md)
+
+## Truly miscellaneous 
 - 🐧 [Linux Command Line Wizz](notes/Linux-Command-Line-Wizz.md)
